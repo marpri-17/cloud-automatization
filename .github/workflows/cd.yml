@@ -1,0 +1,17 @@
+name: Continuous Deployment workflow
+on:
+  push:
+    branches:
+      - 'master'
+jobs:
+  continuousDeployment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Install
+        run: npm ci
+      - name: Build
+        run: npm run Build
+      - name: Deploy
+        run: npm run deploy
